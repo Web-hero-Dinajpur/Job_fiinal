@@ -1,11 +1,12 @@
 import React from 'react';
+import logo from '../assets/icon/icon.png'
 
 const Footer = () => {
     return (
         <div>
             <footer className="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
                 <aside>
-                   <img src="" alt="" />
+                   <img src={logo} alt="" />
                     <p>
                         Job Portal Ltd.
                         <br />
