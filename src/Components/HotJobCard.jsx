@@ -1,10 +1,11 @@
 import React from 'react';
 import { FaDollarSign } from 'react-icons/fa';
 import { MdOutlineLocationOn } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 const HotJobCard = ({ job }) => {
 
-    const { title, location, jobType, company, company_logo, requirements, description, salaryRange } = job;
+    const {_id, title, location, jobType, company, company_logo, requirements, description, salaryRange } = job;
 
     return (
         <div className="card m-4 p-4 bg-base-100 shadow-sm">
@@ -26,14 +27,16 @@ const HotJobCard = ({ job }) => {
                 <p>{description}</p>
                 <div className='flex flex-wrap my-2'>
                     {
-                        requirements.map(skill => <p className='border rounded-md m-1 hover:text-blue-800 hover:bg-gray-300 px-1'>{skill}</p>)
+                        requirements.map((skill, index) => <p key={index} className='border rounded-md m-1 hover:text-blue-800 hover:bg-gray-300 px-1'>{skill}</p>)
                     }
                 </div>
                 <div className="card-actions items-center">
                     <div className='flex items-center'>
-                        Salary:<FaDollarSign></FaDollarSign> {salaryRange.min}, {salaryRange.max}
+                        Salary:<FaDollarSign></FaDollarSign> {salaryRange.min}, {salaryRange.max}, {salaryRange.currency}
                     </div>
-                    <button className="btn btn-primary">Apply</button>
+                    <Link to={`jobs/${_id}`}>
+                        <button className="btn btn-primary">Apply</button>
+                    </Link>
                 </div>
             </div>
         </div>
